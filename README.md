@@ -1,1 +1,5 @@
-# groupme_swagbot
+# GroupMe SwagBot
+
+GroupMe Fantasy Sports Bot
+
+---
