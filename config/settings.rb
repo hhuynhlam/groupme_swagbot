@@ -4,7 +4,10 @@ class Settings
   extend Mixlib::Config
 
   config_context :group_me do
-    default(:bot_id, ENV['GROUP_ME_BOT_ID'])
+    config_context :bot_id do
+      default(:big_baller, ENV['GROUP_ME_BIG_BALLER_BOT_ID'])
+      default(:swag, ENV['GROUP_ME_SWAG_BOT_ID'])
+    end
     default(:url, ENV['GROUP_ME_URL'])
   end
 
