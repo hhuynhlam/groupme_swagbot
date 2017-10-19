@@ -12,6 +12,11 @@ class Settings
     default(:url, ENV['GROUP_ME_URL'])
   end
 
+  config_context :sidekiq do
+    default(:password, ENV['SIDEKIQ_PASSWORD'])
+    default(:user, ENV['SIDEKIQ_USER'])
+  end
+
   config_context :yahoo_fantasy_sports do
     default(:oauth_client_id, ENV['YAHOO_FANTASY_SPORTS_OAUTH_CLIENT_ID'])
     default(:oauth_client_secret, ENV['YAHOO_FANTASY_SPORTS_OAUTH_CLIENT_SECRET'])

@@ -6,7 +6,6 @@ ruby '2.3.1'
 gem 'rails', '~> 5.0.0'
 
 gem 'active_model_serializers'
-gem 'clockwork', require: false
 gem 'faraday'
 gem 'jazz_fingers'
 gem 'mixlib-config'
@@ -15,6 +14,7 @@ gem 'pry-rails'
 gem 'rack-cors', require: 'rack/cors'
 gem 'redis-namespace'
 gem 'sidekiq'
+gem "simple_scheduler"
 gem 'sinatra', github: 'sinatra'
 gem 'virtus'
 gem 'zapier_ruby'
