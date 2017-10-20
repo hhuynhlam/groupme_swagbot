@@ -12,6 +12,10 @@ class Settings
     default(:url, ENV['GROUP_ME_URL'])
   end
 
+  config_context :nba do
+    default(:url, ENV['NBA_URL'])
+  end
+
   config_context :sidekiq do
     default(:password, ENV['SIDEKIQ_PASSWORD'])
     default(:user, ENV['SIDEKIQ_USER'])

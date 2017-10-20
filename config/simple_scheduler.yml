@@ -1,6 +1,6 @@
 # Global configuration options. These can also be set on each task.
-queue_ahead: 360 # Number of minutes to queue jobs into the future
+queue_ahead: 10 # Number of minutes to queue jobs into the future
 
 simple_task:
   class: "NBA::PlayByPlayJob"
-  every: "5.seconds"
+  every: "2.seconds"
