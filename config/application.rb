@@ -27,7 +27,7 @@ module PartnerApi
     # Skip views, helpers and assets when generating a new resource.
     config.api_only = true
 
-    config.time_zone = 'UTC'
+    config.time_zone = 'Pacific Time (US & Canada)'
     config.use_standard_json_time_format = true
 
     config.active_job.queue_adapter = :sidekiq

@@ -20,7 +20,7 @@ class Play < ApplicationRecord
   end
 
   def group_me_message
-    return SHOT_MADE.sample if bot?
+    return SHOT_MADE.sample if bot
   end
 
   private

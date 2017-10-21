@@ -3,4 +3,4 @@ queue_ahead: 10 # Number of minutes to queue jobs into the future
 
 simple_task:
   class: "NBA::PlayByPlayJob"
-  every: "2.seconds"
+  every: "5.seconds"
