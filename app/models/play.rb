@@ -2,12 +2,12 @@
 
 class Play < ApplicationRecord
   include Mongoid::Document
-  SHOT_MADE = ConstantService.responses(:shot_made)
+  SHOT_MADE_RESPONSES = ConstantService.responses(:shot_made)
+  THREE_POINT_SHOT_MADE_RESPONSES = ConstantService.responses(:three_point_shot_made)
 
-  BIG_BALLER_3PT_SHOT_MADE = /.*(Ball).*(3pt).*(Shot:).*(Made)/i
   BIG_BALLER_SHOT_MADE = /.*(Ball).*(Shot:).*(Made)/i
-  SWAG_3PT_SHOT_MADE = /.*(Young).*(3pt).*(Shot:).*(Made)/i
   SWAG_SHOT_MADE = /.*(Young).*(Shot:).*(Made)/i
+  THREE_POINT_SHOT_MADE = /.*(3pt).*(Shot:)/i
 
   belongs_to :game
 
@@ -20,18 +20,23 @@ class Play < ApplicationRecord
   end
 
   def group_me_message
-    return SHOT_MADE.sample if bot
+    return unless bot
+    return THREE_POINT_SHOT_MADE_RESPONSES.sample if three_pointer?
+
+    SHOT_MADE_RESPONSES.sample
   end
 
   private
 
   def big_baller?
-    description.match(BIG_BALLER_3PT_SHOT_MADE).present? ||
-      description.match(BIG_BALLER_SHOT_MADE).present?
+    description.match(BIG_BALLER_SHOT_MADE).present?
   end
 
   def swag?
-    description.match(SWAG_3PT_SHOT_MADE).present? ||
-      description.match(SWAG_SHOT_MADE).present?
+    description.match(SWAG_SHOT_MADE).present?
+  end
+
+  def three_pointer?
+    description.match(THREE_POINT_SHOT_MADE).present?
   end
 end
