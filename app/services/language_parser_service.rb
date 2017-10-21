@@ -15,17 +15,20 @@ class LanguageParserService
   end
 
   def call
-    return { command: :wake, bot: :big_baller } if waking_big_baller?
-    return { command: :wake, bot: :swag } if waking_swag?
+    { command: :wake, bot: @context } if wake?
   end
 
   private
 
+  def wake?
+    waking_big_baller? || waking_swag?
+  end
+
   def waking_big_baller?
-    (WAKE & @message).any? && (BIG_BALLER & @message).any? && @context == '/big_baller_bot'
+    (WAKE & @message).any? && (BIG_BALLER & @message).any? && @context == :big_baller
   end
 
   def waking_swag?
-    (WAKE & @message).any? && (SWAG & @message).any? && @context == '/swag_bot'
+    (WAKE & @message).any? && (SWAG & @message).any? && @context == :swag
   end
 end
