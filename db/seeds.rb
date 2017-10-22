@@ -8,6 +8,7 @@ class Seeds
 
     private
 
+    # rubocop:disable Metrics/MethodLength
     def seed_games
       data = load_from_json('2017_2018_schedule')
 
@@ -18,6 +19,7 @@ class Seeds
           new_game[:away_team] = game.dig('v', 'tn')
           new_game[:home_team] = game.dig('h', 'tn')
           new_game[:scheduled_date] = game.dig('gdte')
+          new_game[:scheduled_time] = game.dig('stt')&.in_time_zone('Eastern Time (US & Canada)')
 
           new_game.save
         end
