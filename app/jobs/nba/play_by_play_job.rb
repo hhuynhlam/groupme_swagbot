@@ -36,6 +36,8 @@ module NBA
       Game.where(scheduled_date: Time.zone.today)
           .or(:home_team.in => %w[Lakers Warriors])
           .or(:away_team.in => %w[Lakers Warriors])
+          .select { |game| Time.zone.now > game.scheduled_time }
+          .select { |game| Time.zone.now < game.scheduled_time + 5.hours }
     end
 
     def process_play(play)
