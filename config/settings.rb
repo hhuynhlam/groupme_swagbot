@@ -31,11 +31,11 @@ class Settings
   end
 
   config_context :mongoid do
-    default(:uri, ENV['MONGODB_URI'])
+    default(:uri, ENV['MONGO_URL'])
   end
 
   config_context :redis do
     default(:namespace, 'groupme_swagbot')
-    default(:uri, ENV['REDIS_URI'])
+    default(:uri, ENV['REDIS_URL'])
   end
 end
